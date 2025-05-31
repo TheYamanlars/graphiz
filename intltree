@@ -1,0 +1,201 @@
+digraph G {
+ 
+rankdir=TB;
+ 
+// Node styles
+node [shape=box, style=filled];
+ 
+// Semester nodes (gray circles)
+FR1 [shape=circle, fillcolor="#D3D3D3", label="FR1"];
+FR2 [shape=circle, fillcolor="#D3D3D3", label="FR2"];
+SO1 [shape=circle, fillcolor="#D3D3D3", label="SO1"];
+SO2 [shape=circle, fillcolor="#D3D3D3", label="SO2"];
+JR1 [shape=circle, fillcolor="#D3D3D3", label="JR1"];
+JR2 [shape=circle, fillcolor="#D3D3D3", label="JR2"];
+SR1 [shape=circle, fillcolor="#D3D3D3", label="SR1"];
+SR2 [shape=circle, fillcolor="#D3D3D3", label="SR2"];
+ 
+// Common Core Courses (light blue)
+ACWR101 [fillcolor="#ADD8E6", label="ACWR 101"];
+ETHC [fillcolor="#ADD8E6", label="ETHC"];
+SCIE [fillcolor="#ADD8E6", label="SCIE"];
+TURK100 [fillcolor="#ADD8E6", label="TURK 100"];
+HUMS [fillcolor="#ADD8E6", label="HUMS"];
+ASIU [fillcolor="#ADD8E6", label="ASIU"];
+HIST300 [fillcolor="#ADD8E6", label="HIST 300"];
+ 
+// Required Area Courses (gray-blue)
+MATH101 [fillcolor="#A0AEC0", label="MATH 101"];
+INTL101 [fillcolor="#A0AEC0", label="INTL 101"];
+INTL203 [fillcolor="#A0AEC0", label="INTL 203"];
+INTL204 [fillcolor="#A0AEC0", label="INTL 204"];
+MATH201 [fillcolor="#A0AEC0", label="MATH 201"];
+INTL201 [fillcolor="#A0AEC0", label="INTL 201"];
+INTL301 [fillcolor="#A0AEC0", label="INTL 301"];
+AREA1 [fillcolor="#A0AEC0", label="AREA"];
+AREA2 [fillcolor="#A0AEC0", label="AREA"];
+AREA3 [fillcolor="#A0AEC0", label="AREA"];
+AREA4 [fillcolor="#A0AEC0", label="AREA"];
+AREA5 [fillcolor="#A0AEC0", label="AREA"];
+AREA6 [fillcolor="#A0AEC0", label="AREA"];
+AREA7 [fillcolor="#A0AEC0", label="AREA"];
+INTL308 [fillcolor="#A0AEC0", label="INTL 308"];
+INTL499 [fillcolor="#A0AEC0", label="INTL 499"];
+ 
+// Pool Courses (gray-blue)
+ECON101 [fillcolor="#A0AEC0", label="ECON 101"];
+ECON102 [fillcolor="#A0AEC0", label="ECON 102"];
+ACWR103 [fillcolor="#A0AEC0", label="ACWR 103/104"];
+MATH102 [fillcolor="#A0AEC0", label="MATH 102"];
+PSYC100 [fillcolor="#A0AEC0", label="PSYC 100"];
+FPS [fillcolor="#A0AEC0", label="FPS"];
+ICD [fillcolor="#A0AEC0", label="ICD"];
+ROW [fillcolor="#A0AEC0", label="ROW"];
+DGG [fillcolor="#A0AEC0", label="DGG"];
+ 
+// Single-credit courses (distinct colors for clarity)
+ALIS100 [fillcolor="#FFDEAD", label="ALIS 100"];
+DOS171 [fillcolor="#FFDEAD", label="DOS 171"];
+UNIV101 [fillcolor="#FFDEAD", label="UNIV 101"];
+ 
+// Semester progression
+FR1 -> FR2;
+FR2 -> SO1;
+SO1 -> SO2;
+SO2 -> JR1;
+JR1 -> JR2;
+JR2 -> SR1;
+SR1 -> SR2;
+ 
+// Prerequisite relationships
+INTL101 -> INTL203;
+INTL101 -> INTL204;
+INTL101 -> INTL201;
+MATH201 -> INTL201;
+ACWR101 -> ACWR103;
+INTL101 -> INTL308;
+INTL203 -> INTL499;
+INTL204 -> INTL499;
+INTL201 -> INTL499;
+INTL301 -> INTL499;
+INTL308 -> INTL499;
+FPS -> INTL499;
+ICD -> INTL499;
+ROW -> INTL499;
+DGG -> INTL499;
+ECON101 -> ECON102;
+MATH101 -> MATH102;
+ACWR101 -> HIST300;
+ 
+// Rank assignments for semesters
+{rank=same; FR1; ACWR101; ALIS100; DOS171; ECON101; ETHC; MATH101; PSYC100; SCIE; TURK100; UNIV101}
+{rank=same; FR2; ACWR103; ECON102; HUMS; INTL101; MATH102; UNIV199}
+{rank=same; SO1; INTL203; INTL204; MATH201}
+{rank=same; SO2; HIST300; INTL201; INTL301}
+{rank=same; JR1; AREA1; AREA2; ASIU; FPS; ICD; ROW}
+{rank=same; JR2; AREA3; AREA4; DGG; INTL308}
+{rank=same; SR1; AREA5; AREA6}
+{rank=same; SR2; AREA7; INTL499}
+}
+
+digraph G {
+    
+    rankdir=TB;
+    
+    // Node styles
+    node [shape=box, style=filled];
+    
+    // Semester nodes (gray circles)
+    FR1 [shape=circle, fillcolor="#D3D3D3", label="FR1"];
+    FR2 [shape=circle, fillcolor="#D3D3D3", label="FR2"];
+    SO1 [shape=circle, fillcolor="#D3D3D3", label="SO1"];
+    SO2 [shape=circle, fillcolor="#D3D3D3", label="SO2"];
+    JR1 [shape=circle, fillcolor="#D3D3D3", label="JR1"];
+    JR2 [shape=circle, fillcolor="#D3D3D3", label="JR2"];
+    SR1 [shape=circle, fillcolor="#D3D3D3", label="SR1"];
+    SR2 [shape=circle, fillcolor="#D3D3D3", label="SR2"];
+    
+    // Common Core Courses (Cool Gray 10)
+    ACWR101 [fillcolor="#63666A", label="ACWR 101", fontcolor="white"];
+    ETHC [fillcolor="#63666A", label="ETHC", fontcolor="white"];
+    SCIE [fillcolor="#63666A", label="SCIE", fontcolor="white"];
+    TURK100 [fillcolor="#63666A", label="TURK 100", fontcolor="white"];
+    HUMS [fillcolor="#63666A", label="HUMS", fontcolor="white"];
+    ASIU [fillcolor="#63666A", label="ASIU", fontcolor="white"];
+    HIST300 [fillcolor="#63666A", label="HIST 300", fontcolor="white"];
+    
+    // Required Area Courses (Pantone 187 - Red)
+    MATH101 [fillcolor="#C01C2F", label="MATH 101", fontcolor="white"];
+    INTL101 [fillcolor="#C01C2F", label="INTL 101", fontcolor="white"];
+    INTL203 [fillcolor="#C01C2F", label="INTL 203", fontcolor="white"];
+    INTL204 [fillcolor="#C01C2F", label="INTL 204", fontcolor="white"];
+    MATH201 [fillcolor="#C01C2F", label="MATH 201", fontcolor="white"];
+    INTL201 [fillcolor="#C01C2F", label="INTL 201", fontcolor="white"];
+    INTL301 [fillcolor="#C01C2F", label="INTL 301", fontcolor="white"];
+    INTL308 [fillcolor="#C01C2F", label="INTL 308", fontcolor="white"];
+    INTL499 [fillcolor="#C01C2F", label="INTL 499", fontcolor="white"];
+    
+    // Area Courses (Pantone 876 - Gold)
+    AREA1 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA2 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA3 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA4 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA5 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA6 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    AREA7 [fillcolor="#A97142", label="AREA", fontcolor="white"];
+    
+    // Pool Courses (Pantone 187 - Red)
+    ECON101 [fillcolor="#C01C2F", label="ECON 101", fontcolor="white"];
+    ECON102 [fillcolor="#C01C2F", label="ECON 102", fontcolor="white"];
+    ACWR103 [fillcolor="#C01C2F", label="ACWR 103/104", fontcolor="white"];
+    MATH102 [fillcolor="#C01C2F", label="MATH 102", fontcolor="white"];
+    PSYC100 [fillcolor="#C01C2F", label="PSYC 100", fontcolor="white"];
+    FPS [fillcolor="#C01C2F", label="FPS", fontcolor="white"];
+    ICD [fillcolor="#C01C2F", label="ICD", fontcolor="white"];
+    ROW [fillcolor="#C01C2F", label="ROW", fontcolor="white"];
+    DGG [fillcolor="#C01C2F", label="DGG", fontcolor="white"];
+    
+    // Single-credit courses (Darker Gray)
+    ALIS100 [fillcolor="#4A4C4F", label="ALIS 100", style="filled,bold", fontcolor="white"];
+    DOS171 [fillcolor="#4A4C4F", label="DOS 171", style="filled,bold", fontcolor="white"];
+    UNIV101 [fillcolor="#4A4C4F", label="UNIV 101", style="filled,bold", fontcolor="white"];
+    
+    // Semester progression
+    FR1 -> FR2;
+    FR2 -> SO1;
+    SO1 -> SO2;
+    SO2 -> JR1;
+    JR1 -> JR2;
+    JR2 -> SR1;
+    SR1 -> SR2;
+    
+    // Prerequisite relationships
+    INTL101 -> INTL203;
+    INTL101 -> INTL204;
+    INTL101 -> INTL201;
+    MATH201 -> INTL201;
+    ACWR101 -> ACWR103;
+    INTL101 -> INTL308;
+    INTL203 -> INTL499;
+    INTL204 -> INTL499;
+    INTL201 -> INTL499;
+    INTL301 -> INTL499;
+    INTL308 -> INTL499;
+    FPS -> INTL499;
+    ICD -> INTL499;
+    ROW -> INTL499;
+    DGG -> INTL499;
+    ECON101 -> ECON102;
+    MATH101 -> MATH102;
+    ACWR101 -> HIST300;
+    
+    // Rank assignments for semesters
+    {rank=same; FR1; ACWR101; ALIS100; DOS171; ECON101; ETHC; MATH101; PSYC100; SCIE; TURK100; UNIV101}
+    {rank=same; FR2; ACWR103; ECON102; HUMS; INTL101; MATH102; UNIV199}
+    {rank=same; SO1; INTL203; INTL204; MATH201}
+    {rank=same; SO2; HIST300; INTL201; INTL301}
+    {rank=same; JR1; AREA1; AREA2; ASIU; FPS; ICD; ROW}
+    {rank=same; JR2; AREA3; AREA4; DGG; INTL308}
+    {rank=same; SR1; AREA5; AREA6}
+    {rank=same; SR2; AREA7; INTL499}
+}
