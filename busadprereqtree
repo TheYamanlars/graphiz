@@ -1,0 +1,128 @@
+digraph G {
+    rankdir=TB;
+    
+    // Global node settings for equal-sized boxes
+    node [
+        shape=box,
+        style=filled,
+        width=1.5,
+        height=0.6,
+        fixedsize=true,
+        fontname="Arial",
+        fontsize=10
+    ];
+
+    // Semester nodes (gray circles)
+    node [shape=circle, width=0.8, fixedsize=true, fontsize=12];
+    FR1 [fillcolor="#D3D3D3", label="FR1"];
+    FR2 [fillcolor="#D3D3D3", label="FR2"];
+    SO1 [fillcolor="#D3D3D3", label="SO1"];
+    SO2 [fillcolor="#D3D3D3", label="SO2"];
+    JR1 [fillcolor="#D3D3D3", label="JR1"];
+    JR2 [fillcolor="#D3D3D3", label="JR2"];
+    SR1 [fillcolor="#D3D3D3", label="SR1"];
+    SR2 [fillcolor="#D3D3D3", label="SR2"];
+
+    // Reset node shape to box for courses
+    node [shape=box, width=1.5, height=0.6];
+
+    // Common Core Courses (Cool Gray)
+    ACWR101 [fillcolor="#63666A", label="ACWR 101", fontcolor="white"];
+    ALIS100 [fillcolor="#63666A", label="ALIS 100", fontcolor="white"];
+    DOS171 [fillcolor="#63666A", label="DOS 171", fontcolor="white"];
+    ETHC [fillcolor="#63666A", label="ETHC", fontcolor="white"];
+    SCIE [fillcolor="#63666A", label="SCIE", fontcolor="white"];
+    TURK100 [fillcolor="#63666A", label="TURK 100", fontcolor="white"];
+    UNIV101 [fillcolor="#63666A", label="UNIV 101", fontcolor="white"];
+    HUMS [fillcolor="#63666A", label="HUMS", fontcolor="white"];
+    ASIU [fillcolor="#63666A", label="ASIU", fontcolor="white"];
+    HIST300 [fillcolor="#63666A", label="HIST 300", fontcolor="white"];
+    ACWR103 [fillcolor="#63666A", label="ACWR 103", fontcolor="white"];
+    SOSC [fillcolor="#63666A", label="SOSC", fontcolor="white"];
+
+    // Required Area Courses (Red)
+    MATH101 [fillcolor="#C01C2F", label="MATH 101", fontcolor="white"];
+    ECON101 [fillcolor="#C01C2F", label="ECON 101", fontcolor="white"];
+    MATH102 [fillcolor="#C01C2F", label="MATH 102", fontcolor="white"];
+    PSYC100 [fillcolor="#C01C2F", label="PSYC 100", fontcolor="white"];
+    UNIV199 [fillcolor="#C01C2F", label="UNIV 199", fontcolor="white"];
+    ACCT201 [fillcolor="#C01C2F", label="ACCT 201", fontcolor="white"];
+    ECON102 [fillcolor="#C01C2F", label="ECON 102", fontcolor="white"];
+    MATH201 [fillcolor="#C01C2F", label="MATH 201", fontcolor="white"];
+    MKTG201 [fillcolor="#C01C2F", label="MKTG 201", fontcolor="white"];
+    ACCT202 [fillcolor="#C01C2F", label="ACCT 202", fontcolor="white"];
+    MFIN202 [fillcolor="#C01C2F", label="MFIN 202", fontcolor="white"];
+    BLAW202 [fillcolor="#C01C2F", label="BLAW 202", fontcolor="white"];
+    QMBU301 [fillcolor="#C01C2F", label="QMBU 301", fontcolor="white"];
+
+    // Pool Courses with multiline labels
+    OPS_POOL [fillcolor="#C01C2F", label="OPS Pool\n(OPSM 301 or\nOPSM 302)", fontcolor="white"];
+    INF_POOL [fillcolor="#C01C2F", label="INF Pool\n(MGIS 301/410 or\nQMBU 420)", fontcolor="white"];
+    BUSA499 [fillcolor="#C01C2F", label="BUSA 499", fontcolor="white"];
+
+    // Area Electives (Gold)
+    node [fillcolor="#A97142", fontcolor="white"];
+    AE1_JR1 [label="AE"];
+    AE1_JR2 [label="AE"];
+    AE2_JR2 [label="AE"];
+    AE1_SR1 [label="AE"];
+    AE2_SR1 [label="AE"];
+    AE1_SR2 [label="AE"];
+
+    // General Electives (Light Beige)
+    node [fillcolor="#F0DCBC", fontcolor="black"];
+    GE1_JR1 [label="GE"];
+    GE1_JR2 [label="GE"];
+    GE2_JR2 [label="GE"];
+    GE1_SR1 [label="GE"];
+    GE2_SR1 [label="GE"];
+    GE3_SR1 [label="GE"];
+    GE1_SR2 [label="GE"];
+    GE2_SR2 [label="GE"];
+    GE3_SR2 [label="GE"];
+
+    // Semester progression
+    edge [weight=1000];
+    FR1 -> FR2;
+    FR2 -> SO1;
+    SO1 -> SO2;
+    SO2 -> JR1;
+    JR1 -> JR2;
+    JR2 -> SR1;
+    SR1 -> SR2;
+
+    // Prerequisites
+    edge [weight=1];
+    ACWR101 -> ACWR103;
+    ACWR101 -> HIST300;
+    MATH101 -> MATH102;
+    DOS171 -> MKTG201;
+    ECON101 -> ECON102;
+    ACCT201 -> ACCT202;
+    ACCT201 -> MFIN202;
+    ECON101 -> MFIN202;
+    MATH201 -> OPS_POOL;
+    DOS171 -> OPS_POOL;
+    MATH201 -> QMBU301;
+    DOS171 -> QMBU301;
+    DOS171 -> INF_POOL;
+
+    // Capstone prerequisites
+    {ACCT201 ACCT202 BLAW202 MFIN202 MKTG201 QMBU301 OPS_POOL INF_POOL} -> BUSA499;
+
+    // Rank assignments
+    {rank=same; FR1; UNIV101; ACWR101; ALIS100; DOS171; MATH101; SCIE; TURK100; ETHC}
+    {rank=same; FR2; ACWR103; ECON101; MATH102; PSYC100; UNIV199}
+    {rank=same; SO1; ACCT201; ECON102; MATH201; MKTG201; SOSC}
+    {rank=same; SO2; ACCT202; HIST300; MFIN202; OPS_POOL; HUMS}
+    {rank=same; JR1; BLAW202; QMBU301; ASIU; AE1_JR1; GE1_JR1}
+    {rank=same; JR2; INF_POOL; AE1_JR2; AE2_JR2; GE1_JR2; GE2_JR2}
+    {rank=same; SR1; AE1_SR1; AE2_SR1; GE1_SR1; GE2_SR1; GE3_SR1}
+    {rank=same; SR2; BUSA499; AE1_SR2; GE1_SR2; GE2_SR2; GE3_SR2}
+
+    // Graph label
+    label = "KOÇ UNIVERSITY\nBUSINESS ADMINISTRATION PREREQUISITE TREE\nUpdated: January 2025";
+    labelloc = "t";
+    fontsize = 16;
+    fontname = "Arial Bold";
+}
