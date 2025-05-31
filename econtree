@@ -1,0 +1,112 @@
+digraph G {
+    rankdir=TB;
+ 
+    // Node styles
+    node [shape=box, style=filled];
+ 
+    // Semester nodes (gray circles)
+    FR1 [shape=circle, fillcolor="#D3D3D3", label="FR1"];
+    FR2 [shape=circle, fillcolor="#D3D3D3", label="FR2"];
+    SO1 [shape=circle, fillcolor="#D3D3D3", label="SO1"];
+    SO2 [shape=circle, fillcolor="#D3D3D3", label="SO2"];
+    JR1 [shape=circle, fillcolor="#D3D3D3", label="JR1"];
+    JR2 [shape=circle, fillcolor="#D3D3D3", label="JR2"];
+    SR1 [shape=circle, fillcolor="#D3D3D3", label="SR1"];
+    SR2 [shape=circle, fillcolor="#D3D3D3", label="SR2"];
+ 
+    // Common Core Courses (Cool Gray 10)
+    ACWR101 [fillcolor="#63666A", label="ACWR 101", fontcolor="white"];
+    ALIS100 [fillcolor="#4A4C4F", label="ALIS 100", style="filled,bold", fontcolor="white"];
+    DOS171 [fillcolor="#4A4C4F", label="DOS 171", style="filled,bold", fontcolor="white"];
+    SCIE [fillcolor="#63666A", label="SCIE", fontcolor="white"];
+    UNIV101 [fillcolor="#4A4C4F", label="UNIV 101", style="filled,bold", fontcolor="white"];
+    SOSC [fillcolor="#63666A", label="SOSC", fontcolor="white"];
+    ETHC [fillcolor="#63666A", label="ETHC", fontcolor="white"];
+    TURK100 [fillcolor="#63666A", label="TURK 100", fontcolor="white"];
+    HIST300 [fillcolor="#63666A", label="HIST 300", fontcolor="white"];
+    HUMS [fillcolor="#63666A", label="HUMS", fontcolor="white"];
+    ASIU [fillcolor="#63666A", label="ASIU", fontcolor="white"];
+ 
+    // Required Area Courses (Pantone 187 - Red)
+    MAT1 [fillcolor="#C01C2F", label="MAT1\n(MATH 101 or MATH 106)", fontcolor="white"];
+    ECON101 [fillcolor="#C01C2F", label="ECON 101", fontcolor="white"];
+    UNIV199 [fillcolor="#C01C2F", label="UNIV 199", fontcolor="white"];
+    ACWR103 [fillcolor="#C01C2F", label="ACWR 103/104", fontcolor="white"];
+    ECON102 [fillcolor="#C01C2F", label="ECON 102", fontcolor="white"];
+    MAT2 [fillcolor="#C01C2F", label="MAT2\n(MATH 102/106/107)", fontcolor="white"];
+    PSYC100 [fillcolor="#C01C2F", label="PSYC 100", fontcolor="white"];
+    ACCT201 [fillcolor="#C01C2F", label="ACCT 201", fontcolor="white"];
+    ECON201 [fillcolor="#C01C2F", label="ECON 201", fontcolor="white"];
+    MATH201 [fillcolor="#C01C2F", label="MATH 201", fontcolor="white"];
+    ECON202 [fillcolor="#C01C2F", label="ECON 202", fontcolor="white"];
+    ECON311 [fillcolor="#C01C2F", label="ECON 311", fontcolor="white"];
+    ECON499 [fillcolor="#C01C2F", label="ECON 499", fontcolor="white"];
+    BUS1 [fillcolor="#C01C2F", label="Business-Math(BUMA I)\n(ACCT202 or BLAW202 or MFIN202 or MKTG201)", fontcolor="white"];
+    BUS2 [fillcolor="#C01C2F", label="Business-Math(BUMA II)\n(ACCT202 or BLAW202 or MFIN202 or MKTG201,\nMATH103 or MATH208)", fontcolor="white", height=1.2];
+ 
+    // Area Electives (AE) (Pantone 876 - Gold)
+    AE1 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE2 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE3 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE4 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE5 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE6 [fillcolor="#A97142", label="AE", fontcolor="white"];
+    AE7 [fillcolor="#A97142", label="AE", fontcolor="white"];
+
+    // General Electives (GE) (Pantone 155)
+    GE_SO2 [fillcolor="#F0DCBC", label="GE"];
+    GE_JR1 [fillcolor="#F0DCBC", label="GE"];
+    GE1_JR2 [fillcolor="#F0DCBC", label="GE"];
+    GE2_JR2 [fillcolor="#F0DCBC", label="GE"];
+    GE3_JR2 [fillcolor="#F0DCBC", label="GE"];
+    GE1_SR1 [fillcolor="#F0DCBC", label="GE"];
+    GE2_SR1 [fillcolor="#F0DCBC", label="GE"];
+    GE3_SR1 [fillcolor="#F0DCBC", label="GE"];
+    GE1_SR2 [fillcolor="#F0DCBC", label="GE"];
+    GE2_SR2 [fillcolor="#F0DCBC", label="GE"];
+ 
+    // Semester progression
+    edge [weight=1000];
+    FR1 -> FR2;
+    FR2 -> SO1;
+    SO1 -> SO2;
+    SO2 -> JR1;
+    JR1 -> JR2;
+    JR2 -> SR1;
+    SR1 -> SR2;
+ 
+    // Prerequisite relationships
+    edge [weight=1];
+    ACWR101 -> ACWR103;
+    ACWR101 -> HIST300;
+    ECON101 -> ECON102;
+    MAT1 -> MAT2;
+    ECON101 -> ECON201;
+    MAT2 -> ECON201;
+    ECON102 -> ECON202;
+    MAT2 -> ECON202;
+    ECON201 -> ECON311;
+    MATH201 -> ECON311;
+ 
+    // Capstone prerequisites - changed from dashed to solid
+    ECON201 -> ECON499;
+    ECON202 -> ECON499;
+    ECON311 -> ECON499;
+    {AE1 AE2 AE3 AE4} -> ECON499;  // Removed style=dashed
+ 
+    // Rank assignments for semesters
+    {rank=same; FR1; ACWR101; ALIS100; DOS171; ECON101; MAT1; SCIE; UNIV101; UNIV199}
+    {rank=same; FR2; ACWR103; ECON102; MAT2; PSYC100; SOSC}
+    {rank=same; SO1; ACCT201; ECON201; ETHC; MATH201; TURK100}
+    {rank=same; SO2; BUS1; ECON202; HIST300; HUMS; GE_SO2}
+    {rank=same; JR1; AE1; ASIU; BUS2; ECON311; GE_JR1}
+    {rank=same; JR2; AE2; AE3; GE1_JR2; GE2_JR2; GE3_JR2}
+    {rank=same; SR1; AE4; AE5; GE1_SR1; GE2_SR1; GE3_SR1}
+    {rank=same; SR2; AE6; AE7; ECON499; GE1_SR2; GE2_SR2}
+
+    // Graph label
+    label = "KOÇ UNIVERSITY\nECONOMICS PREREQUISITE TREE\nUpdated: January 2025";
+    labelloc = "t";
+    fontsize = 16;
+    fontname = "Arial Bold";
+}
